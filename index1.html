@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You 🌷</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    #080d25,
+    #182c45,
+    #314b55
+  );
+  font-family: Georgia, serif;
+  color: white;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(#ffd6e7 1px, transparent 1px);
+  background-size: 65px 65px, 95px 95px;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .3; }
+  to { opacity: 1; }
+}
+
+.moon {
+  position: absolute;
+  top: 65px;
+  right: 45px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #fff2d5;
+  box-shadow: 0 0 35px #fff2d5;
+}
+
+.title {
+  position: absolute;
+  top: 12%;
+  width: 100%;
+  text-align: center;
+  animation: fade 3s ease;
+}
+
+.title h1 {
+  font-size: 30px;
+  color: #ffd9e8;
+  text-shadow: 0 0 15px pink;
+}
+
+.title p {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #e9dce9;
+}
+
+.garden {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 48%;
+  background: linear-gradient(
+    to top,
+    #142b27,
+    transparent
+  );
+}
+
+.flower {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 330px;
+}
+
+.stem {
+  position: absolute;
+  bottom: 0;
+  left: 98px;
+  width: 5px;
+  height: 0;
+  background: #69ad78;
+  border-radius: 10px;
+  animation: grow 3s 1s forwards;
+}
+
+@keyframes grow {
+  to { height: 190px; }
+}
+
+.leaf {
+  position: absolute;
+  width: 48px;
+  height: 23px;
+  background: #69ad78;
+  border-radius: 100% 0 100% 0;
+  bottom: 100px;
+  left: 55px;
+  transform: rotate(-25deg) scale(0);
+  animation: leaf 1s 3s forwards;
+}
+
+.leaf.right {
+  left: 100px;
+  bottom: 140px;
+  transform: rotate(35deg) scale(0);
+  animation-delay: 3.5s;
+}
+
+@keyframes leaf {
+  to { transform: rotate(-25deg) scale(1); }
+}
+
+.flower-head {
+  position: absolute;
+  left: 68px;
+  bottom: 185px;
+  width: 65px;
+  height: 65px;
+  transform: scale(0);
+  animation: bloom 2s 4s forwards;
+}
+
+@keyframes bloom {
+  0% { transform: scale(0) rotate(-90deg); }
+  80% { transform: scale(1.2) rotate(10deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.petal {
+  position: absolute;
+  width: 32px;
+  height: 42px;
+  background: linear-gradient(#ffb6d1, #ff5c9a);
+  border-radius: 50%;
+  left: 17px;
+  top: -12px;
+  transform-origin: 50% 45px;
+  box-shadow: 0 0 12px #ff8bb9;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg); }
+.petal:nth-child(2) { transform: rotate(45deg); }
+.petal:nth-child(3) { transform: rotate(90deg); }
+.petal:nth-child(4) { transform: rotate(135deg); }
+.petal:nth-child(5) { transform: rotate(180deg); }
+.petal:nth-child(6) { transform: rotate(225deg); }
+.petal:nth-child(7) { transform: rotate(270deg); }
+.petal:nth-child(8) { transform: rotate(315deg); }
+
+.center {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #ffdb76;
+  border-radius: 50%;
+  top: 17px;
+  left: 20px;
+  box-shadow: 0 0 15px #ffdb76;
+}
+
+.message {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  opacity: 0;
+  animation: fade 2s 5.5s forwards;
+}
+
+.message h2 {
+  color: #ffd2e5;
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.message p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #eee3ee;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heart {
+  position: absolute;
+  color: #ff8db9;
+  animation: float 5s linear infinite;
+  opacity: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  100% {
+    transform: translateY(-100vh) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+button {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 11px 22px;
+  border: 1px solid #ffc5dc;
+  border-radius: 30px;
+  background: #ffffff15;
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  z-index: 5;
+}
+
+button:hover {
+  background: #ff8db955;
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="moon"></div>
+
+<div class="title">
+  <h1>For Someone Special ♡</h1>
+  <p>A little flower, just for you...</p>
+</div>
+
+<button onclick="showLove()">Click for a surprise ♡</button>
+
+<div class="garden"></div>
+
+<div class="flower">
+  <div class="stem"></div>
+  <div class="leaf"></div>
+  <div class="leaf right"></div>
+
+  <div class="flower-head">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="center"></div>
+  </div>
+</div>
+
+<div class="message">
+  <h2>For You, My Love ♡</h2>
+  <p>
+    kayaak bungaa inii,
+    akuu harapp harii' kmuu selalu mekar dan indahh 
+    makasihh yaaa kamuu selaluu adaa buatt akuu
+    akuu bersyukurrr bngtttt punyaaa kamuuu<br>
+    akuu beruntung bngtt punyaa kamuu🤍
+  </p>
+</div>
+
+<script>
+function showLove() {
+  alert("Kalau aku bisa kasih satu hal ke kamu, aku pengin kamu bisa ngeliat diri kamu dari mata aku, biar kamu tahu seberapa berartinya kamu buat aku💕🫶");
+}
+
+// Floating hearts
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "♥";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.bottom = "-20px";
+  heart.style.fontSize = (15 + Math.random() * 20) + "px";
+  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 8000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
